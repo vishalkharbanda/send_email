@@ -1,0 +1,3002 @@
+first file...app.js
+/* ==========================================================
+   Hastkala – Resin Products Data & Rendering
+   ========================================================== */
+
+/* ---- CATEGORIES ------------------------------------------- */
+const CATEGORIES = [
+  /* 0 – Pooja Thali */
+  {
+    name: "Pooja Thali",
+    emoji: "杖",
+    badge: "Bestseller",
+    desc: "Handcrafted resin pooja thalis for every ritual",
+    priceRange: "₹499 – ₹1,499",
+    image: null,
+    waMsg: "Hi! I'm interested in Pooja Thali products from Hastkala.",
+    tags: ["Pooja", "Festival", "Thali"],
+    products: [
+      {
+        name: "Classic Gold Thali",
+        price: "₹599",
+        waMsg: "Hi! I'd like to order Classic Gold Thali (₹599)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }
+        ],
+        sizes: [
+          { label: "Small (8in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+8in+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+3"] },
+          { label: "Medium (10in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+3"] },
+          { label: "Large (12in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+12in+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+3"] }
+        ]
+      },
+      {
+        name: "Floral Resin Thali",
+        price: "₹899",
+        waMsg: "Hi! I'd like to order Floral Resin Thali (₹899)",
+        colors: [
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#9B59B6", name: "Purple", images: ["https://placehold.co/400x300/9B59B6/fff?text=Purple+1", "https://placehold.co/400x300/9B59B6/fff?text=Purple+2", "https://placehold.co/400x300/9B59B6/fff?text=Purple+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "Medium (10in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+3"] },
+          { label: "Large (12in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+12in+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+3"] }
+        ]
+      },
+      {
+        name: "Premium Festival Thali Set",
+        price: "₹1,299",
+        waMsg: "Hi! I'd like to order Premium Festival Thali Set (₹1,299)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] },
+          { hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] }
+        ],
+        sizes: [
+          { label: "Large (12in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+12in+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+3"] },
+          { label: "XL (14in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=XL+14in+1", "https://placehold.co/400x300/E8E8E8/333?text=XL+14in+2", "https://placehold.co/400x300/E8E8E8/333?text=XL+14in+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 1 – Return Gifts */
+  {
+    name: "Return Gifts",
+    emoji: "",
+    badge: "Bulk Orders",
+    desc: "Charming resin return gifts for every celebration",
+    priceRange: "₹149 – ₹599",
+    image: null,
+    waMsg: "Hi! I'm interested in Return Gifts from Hastkala.",
+    tags: ["Gifts", "Bulk", "Events"],
+    products: [
+      {
+        name: "Mini Resin Keychain Bulk",
+        price: "₹149/piece",
+        waMsg: "Hi! I'd like to order Mini Resin Keychain Bulk (₹149/piece)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] },
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] }
+        ],
+        sizes: [
+          { label: "Round", images: ["https://placehold.co/400x300/E8E8E8/333?text=Round+1", "https://placehold.co/400x300/E8E8E8/333?text=Round+2", "https://placehold.co/400x300/E8E8E8/333?text=Round+3"] },
+          { label: "Heart", images: ["https://placehold.co/400x300/E8E8E8/333?text=Heart+1", "https://placehold.co/400x300/E8E8E8/333?text=Heart+2", "https://placehold.co/400x300/E8E8E8/333?text=Heart+3"] },
+          { label: "Star", images: ["https://placehold.co/400x300/E8E8E8/333?text=Star+1", "https://placehold.co/400x300/E8E8E8/333?text=Star+2", "https://placehold.co/400x300/E8E8E8/333?text=Star+3"] }
+        ]
+      },
+      {
+        name: "Personalised Resin Box",
+        price: "₹299",
+        waMsg: "Hi! I'd like to order Personalised Resin Box (₹299)",
+        colors: [
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#FFF0E8", name: "Peach", images: ["https://placehold.co/400x300/FFF0E8/333?text=Peach+1", "https://placehold.co/400x300/FFF0E8/333?text=Peach+2", "https://placehold.co/400x300/FFF0E8/333?text=Peach+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }
+        ],
+        sizes: [
+          { label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] },
+          { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }
+        ]
+      },
+      {
+        name: "Floral Resin Coaster Set",
+        price: "₹399",
+        waMsg: "Hi! I'd like to order Floral Resin Coaster Set (₹399)",
+        colors: [
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] }
+        ],
+        sizes: [
+          { label: "Round", images: ["https://placehold.co/400x300/E8E8E8/333?text=Round+1", "https://placehold.co/400x300/E8E8E8/333?text=Round+2", "https://placehold.co/400x300/E8E8E8/333?text=Round+3"] },
+          { label: "Square", images: ["https://placehold.co/400x300/E8E8E8/333?text=Square+1", "https://placehold.co/400x300/E8E8E8/333?text=Square+2", "https://placehold.co/400x300/E8E8E8/333?text=Square+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 2 – Wedding Varmala Preservation */
+  {
+    name: "Wedding Varmala Preservation",
+    emoji: "",
+    badge: null,
+    desc: "Preserve your wedding varmala in stunning resin",
+    priceRange: "₹799 – ₹2,499",
+    image: null,
+    waMsg: "Hi! I'm interested in Wedding Varmala Preservation from Hastkala.",
+    tags: ["Wedding", "Varmala", "Preservation"],
+    products: [
+      {
+        name: "Classic Varmala Frame",
+        price: "₹999",
+        waMsg: "Hi! I'd like to order Classic Varmala Frame (₹999)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "10x12in", images: ["https://placehold.co/400x300/E8E8E8/333?text=10x12in+1", "https://placehold.co/400x300/E8E8E8/333?text=10x12in+2", "https://placehold.co/400x300/E8E8E8/333?text=10x12in+3"] },
+          { label: "12x15in", images: ["https://placehold.co/400x300/E8E8E8/333?text=12x15in+1", "https://placehold.co/400x300/E8E8E8/333?text=12x15in+2", "https://placehold.co/400x300/E8E8E8/333?text=12x15in+3"] }
+        ]
+      },
+      {
+        name: "3D Varmala Shadow Box",
+        price: "₹1,799",
+        waMsg: "Hi! I'd like to order 3D Varmala Shadow Box (₹1,799)",
+        colors: [
+          { hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "12x15in", images: ["https://placehold.co/400x300/E8E8E8/333?text=12x15in+1", "https://placehold.co/400x300/E8E8E8/333?text=12x15in+2", "https://placehold.co/400x300/E8E8E8/333?text=12x15in+3"] },
+          { label: "15x18in", images: ["https://placehold.co/400x300/E8E8E8/333?text=15x18in+1", "https://placehold.co/400x300/E8E8E8/333?text=15x18in+2", "https://placehold.co/400x300/E8E8E8/333?text=15x18in+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 3 – Engagement Platter */
+  {
+    name: "Engagement Platter",
+    emoji: "",
+    badge: "Trending",
+    desc: "Beautiful resin engagement platters & ring trays",
+    priceRange: "₹699 – ₹1,999",
+    image: null,
+    waMsg: "Hi! I'm interested in Engagement Platter products from Hastkala.",
+    tags: ["Engagement", "Ring", "Platter"],
+    products: [
+      {
+        name: "Ring Platter with Florals",
+        price: "₹699",
+        waMsg: "Hi! I'd like to order Ring Platter with Florals (₹699)",
+        colors: [
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#FFD1DC", name: "Blush", images: ["https://placehold.co/400x300/FFD1DC/333?text=Blush+1", "https://placehold.co/400x300/FFD1DC/333?text=Blush+2", "https://placehold.co/400x300/FFD1DC/333?text=Blush+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }
+        ],
+        sizes: [
+          { label: "Small (6in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+6in+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+6in+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+6in+3"] },
+          { label: "Medium (8in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+8in+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+8in+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+8in+3"] }
+        ]
+      },
+      {
+        name: "Floral Tray Set Ring+Necklace",
+        price: "₹1,199",
+        waMsg: "Hi! I'd like to order Floral Tray Set Ring+Necklace (₹1,199)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }
+        ],
+        sizes: [
+          { label: "Standard Set", images: ["https://placehold.co/400x300/E8E8E8/333?text=Standard+Set+1", "https://placehold.co/400x300/E8E8E8/333?text=Standard+Set+2", "https://placehold.co/400x300/E8E8E8/333?text=Standard+Set+3"] }
+        ]
+      },
+      {
+        name: "Premium Engagement Platter",
+        price: "₹1,799",
+        waMsg: "Hi! I'd like to order Premium Engagement Platter (₹1,799)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "Large (10in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+10in+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+10in+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+10in+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 4 – Wedding Card */
+  {
+    name: "Wedding Card",
+    emoji: "",
+    badge: null,
+    desc: "Elegant resin wedding invitation cards",
+    priceRange: "₹199 – ₹799",
+    image: null,
+    waMsg: "Hi! I'm interested in Wedding Card products from Hastkala.",
+    tags: ["Wedding", "Card", "Invitation"],
+    products: [
+      {
+        name: "Floral Resin Wedding Card",
+        price: "₹249",
+        waMsg: "Hi! I'd like to order Floral Resin Wedding Card (₹249)",
+        colors: [
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#FFD1DC", name: "Blush", images: ["https://placehold.co/400x300/FFD1DC/333?text=Blush+1", "https://placehold.co/400x300/FFD1DC/333?text=Blush+2", "https://placehold.co/400x300/FFD1DC/333?text=Blush+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }
+        ],
+        sizes: [
+          { label: "A5", images: ["https://placehold.co/400x300/E8E8E8/333?text=A5+1", "https://placehold.co/400x300/E8E8E8/333?text=A5+2", "https://placehold.co/400x300/E8E8E8/333?text=A5+3"] },
+          { label: "A4", images: ["https://placehold.co/400x300/E8E8E8/333?text=A4+1", "https://placehold.co/400x300/E8E8E8/333?text=A4+2", "https://placehold.co/400x300/E8E8E8/333?text=A4+3"] }
+        ]
+      },
+      {
+        name: "Personalised Card with Name",
+        price: "₹399",
+        waMsg: "Hi! I'd like to order Personalised Card with Name (₹399)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] }
+        ],
+        sizes: [
+          { label: "A5", images: ["https://placehold.co/400x300/E8E8E8/333?text=A5+1", "https://placehold.co/400x300/E8E8E8/333?text=A5+2", "https://placehold.co/400x300/E8E8E8/333?text=A5+3"] },
+          { label: "A4", images: ["https://placehold.co/400x300/E8E8E8/333?text=A4+1", "https://placehold.co/400x300/E8E8E8/333?text=A4+2", "https://placehold.co/400x300/E8E8E8/333?text=A4+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 5 – Photo Frames */
+  {
+    name: "Photo Frames",
+    emoji: "️",
+    badge: null,
+    desc: "Stunning resin photo frames for cherished memories",
+    priceRange: "₹399 – ₹1,299",
+    image: null,
+    waMsg: "Hi! I'm interested in Photo Frames from Hastkala.",
+    tags: ["Photo", "Frame", "Decor"],
+    products: [
+      {
+        name: "Classic Resin Photo Frame",
+        price: "₹499",
+        waMsg: "Hi! I'd like to order Classic Resin Photo Frame (₹499)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] }
+        ],
+        sizes: [
+          { label: "4x6in", images: ["https://placehold.co/400x300/E8E8E8/333?text=4x6in+1", "https://placehold.co/400x300/E8E8E8/333?text=4x6in+2", "https://placehold.co/400x300/E8E8E8/333?text=4x6in+3"] },
+          { label: "5x7in", images: ["https://placehold.co/400x300/E8E8E8/333?text=5x7in+1", "https://placehold.co/400x300/E8E8E8/333?text=5x7in+2", "https://placehold.co/400x300/E8E8E8/333?text=5x7in+3"] },
+          { label: "8x10in", images: ["https://placehold.co/400x300/E8E8E8/333?text=8x10in+1", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+2", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+3"] }
+        ]
+      },
+      {
+        name: "Floral Border Photo Frame",
+        price: "₹699",
+        waMsg: "Hi! I'd like to order Floral Border Photo Frame (₹699)",
+        colors: [
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "5x7in", images: ["https://placehold.co/400x300/E8E8E8/333?text=5x7in+1", "https://placehold.co/400x300/E8E8E8/333?text=5x7in+2", "https://placehold.co/400x300/E8E8E8/333?text=5x7in+3"] },
+          { label: "8x10in", images: ["https://placehold.co/400x300/E8E8E8/333?text=8x10in+1", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+2", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+3"] }
+        ]
+      },
+      {
+        name: "Multi-Photo Collage Frame",
+        price: "₹999",
+        waMsg: "Hi! I'd like to order Multi-Photo Collage Frame (₹999)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] }
+        ],
+        sizes: [
+          { label: "A4", images: ["https://placehold.co/400x300/E8E8E8/333?text=A4+1", "https://placehold.co/400x300/E8E8E8/333?text=A4+2", "https://placehold.co/400x300/E8E8E8/333?text=A4+3"] },
+          { label: "A3", images: ["https://placehold.co/400x300/E8E8E8/333?text=A3+1", "https://placehold.co/400x300/E8E8E8/333?text=A3+2", "https://placehold.co/400x300/E8E8E8/333?text=A3+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 6 – Personalised Gifts */
+  {
+    name: "Personalised Gifts",
+    emoji: "✨",
+    badge: "Custom",
+    desc: "One-of-a-kind personalised resin gifts",
+    priceRange: "₹299 – ₹1,499",
+    image: null,
+    waMsg: "Hi! I'm interested in Personalised Gifts from Hastkala.",
+    tags: ["Custom", "Personalised", "Gift"],
+    products: [
+      {
+        name: "Personalised Name Plaque",
+        price: "₹399",
+        waMsg: "Hi! I'd like to order Personalised Name Plaque (₹399)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] },
+          { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] },
+          { label: "Large", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+3"] }
+        ]
+      },
+      {
+        name: "Custom Resin Memento Box",
+        price: "₹799",
+        waMsg: "Hi! I'd like to order Custom Resin Memento Box (₹799)",
+        colors: [
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }
+        ],
+        sizes: [
+          { label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] },
+          { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 7 – Jewellery */
+  {
+    name: "Jewellery",
+    emoji: "",
+    badge: null,
+    desc: "Handcrafted resin jewellery for every occasion",
+    priceRange: "₹199 – ₹999",
+    image: null,
+    waMsg: "Hi! I'm interested in Jewellery from Hastkala.",
+    tags: ["Jewellery", "Earrings", "Necklace"],
+    products: [
+      {
+        name: "Resin Drop Earrings",
+        price: "₹249",
+        waMsg: "Hi! I'd like to order Resin Drop Earrings (₹249)",
+        colors: [
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] },
+          { hex: "#11998E", name: "Teal", images: ["https://placehold.co/400x300/11998E/fff?text=Teal+1", "https://placehold.co/400x300/11998E/fff?text=Teal+2", "https://placehold.co/400x300/11998E/fff?text=Teal+3"] }
+        ],
+        sizes: [
+          { label: "Standard", images: ["https://placehold.co/400x300/E8E8E8/333?text=Standard+1", "https://placehold.co/400x300/E8E8E8/333?text=Standard+2", "https://placehold.co/400x300/E8E8E8/333?text=Standard+3"] }
+        ]
+      },
+      {
+        name: "Resin Pendant Necklace",
+        price: "₹399",
+        waMsg: "Hi! I'd like to order Resin Pendant Necklace (₹399)",
+        colors: [
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#2C3E50", name: "Navy", images: ["https://placehold.co/400x300/2C3E50/fff?text=Navy+1", "https://placehold.co/400x300/2C3E50/fff?text=Navy+2", "https://placehold.co/400x300/2C3E50/fff?text=Navy+3"] }
+        ],
+        sizes: [
+          { label: "Round", images: ["https://placehold.co/400x300/E8E8E8/333?text=Round+1", "https://placehold.co/400x300/E8E8E8/333?text=Round+2", "https://placehold.co/400x300/E8E8E8/333?text=Round+3"] },
+          { label: "Oval", images: ["https://placehold.co/400x300/E8E8E8/333?text=Oval+1", "https://placehold.co/400x300/E8E8E8/333?text=Oval+2", "https://placehold.co/400x300/E8E8E8/333?text=Oval+3"] },
+          { label: "Teardrop", images: ["https://placehold.co/400x300/E8E8E8/333?text=Teardrop+1", "https://placehold.co/400x300/E8E8E8/333?text=Teardrop+2", "https://placehold.co/400x300/E8E8E8/333?text=Teardrop+3"] }
+        ]
+      },
+      {
+        name: "Resin Ring",
+        price: "₹199",
+        waMsg: "Hi! I'd like to order Resin Ring (₹199)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] }
+        ],
+        sizes: [
+          { label: "Size 5", images: ["https://placehold.co/400x300/E8E8E8/333?text=Size+5+1", "https://placehold.co/400x300/E8E8E8/333?text=Size+5+2", "https://placehold.co/400x300/E8E8E8/333?text=Size+5+3"] },
+          { label: "Size 6", images: ["https://placehold.co/400x300/E8E8E8/333?text=Size+6+1", "https://placehold.co/400x300/E8E8E8/333?text=Size+6+2", "https://placehold.co/400x300/E8E8E8/333?text=Size+6+3"] },
+          { label: "Size 7", images: ["https://placehold.co/400x300/E8E8E8/333?text=Size+7+1", "https://placehold.co/400x300/E8E8E8/333?text=Size+7+2", "https://placehold.co/400x300/E8E8E8/333?text=Size+7+3"] },
+          { label: "Size 8", images: ["https://placehold.co/400x300/E8E8E8/333?text=Size+8+1", "https://placehold.co/400x300/E8E8E8/333?text=Size+8+2", "https://placehold.co/400x300/E8E8E8/333?text=Size+8+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 8 – Rose Preservation */
+  {
+    name: "Rose Preservation",
+    emoji: "",
+    badge: "Unique",
+    desc: "Preserve real roses forever in crystal-clear resin",
+    priceRange: "₹599 – ₹1,799",
+    image: null,
+    waMsg: "Hi! I'm interested in Rose Preservation from Hastkala.",
+    tags: ["Rose", "Preservation", "Forever"],
+    products: [
+      {
+        name: "Single Rose in Resin Block",
+        price: "₹699",
+        waMsg: "Hi! I'd like to order Single Rose in Resin Block (₹699)",
+        colors: [
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }
+        ],
+        sizes: [
+          { label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] },
+          { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }
+        ]
+      },
+      {
+        name: "Rose Bouquet Resin Frame",
+        price: "₹1,299",
+        waMsg: "Hi! I'd like to order Rose Bouquet Resin Frame (₹1,299)",
+        colors: [
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }
+        ],
+        sizes: [
+          { label: "8x10in", images: ["https://placehold.co/400x300/E8E8E8/333?text=8x10in+1", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+2", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+3"] },
+          { label: "10x12in", images: ["https://placehold.co/400x300/E8E8E8/333?text=10x12in+1", "https://placehold.co/400x300/E8E8E8/333?text=10x12in+2", "https://placehold.co/400x300/E8E8E8/333?text=10x12in+3"] }
+        ]
+      },
+      {
+        name: "Rose Petal Resin Tray",
+        price: "₹899",
+        waMsg: "Hi! I'd like to order Rose Petal Resin Tray (₹899)",
+        colors: [
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }
+        ],
+        sizes: [
+          { label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] },
+          { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 9 – Key Chains */
+  {
+    name: "Key Chains",
+    emoji: "",
+    badge: null,
+    desc: "Cute resin keychains for everyday style",
+    priceRange: "₹99 – ₹299",
+    image: null,
+    waMsg: "Hi! I'm interested in Key Chains from Hastkala.",
+    tags: ["Keychain", "Accessory", "Gift"],
+    products: [
+      {
+        name: "Floral Resin Keychain",
+        price: "₹129",
+        waMsg: "Hi! I'd like to order Floral Resin Keychain (₹129)",
+        colors: [
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] },
+          { hex: "#11998E", name: "Teal", images: ["https://placehold.co/400x300/11998E/fff?text=Teal+1", "https://placehold.co/400x300/11998E/fff?text=Teal+2", "https://placehold.co/400x300/11998E/fff?text=Teal+3"] }
+        ],
+        sizes: [
+          { label: "Round", images: ["https://placehold.co/400x300/E8E8E8/333?text=Round+1", "https://placehold.co/400x300/E8E8E8/333?text=Round+2", "https://placehold.co/400x300/E8E8E8/333?text=Round+3"] },
+          { label: "Heart", images: ["https://placehold.co/400x300/E8E8E8/333?text=Heart+1", "https://placehold.co/400x300/E8E8E8/333?text=Heart+2", "https://placehold.co/400x300/E8E8E8/333?text=Heart+3"] },
+          { label: "Rectangle", images: ["https://placehold.co/400x300/E8E8E8/333?text=Rectangle+1", "https://placehold.co/400x300/E8E8E8/333?text=Rectangle+2", "https://placehold.co/400x300/E8E8E8/333?text=Rectangle+3"] }
+        ]
+      },
+      {
+        name: "Personalised Name Keychain",
+        price: "₹179",
+        waMsg: "Hi! I'd like to order Personalised Name Keychain (₹179)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "Standard", images: ["https://placehold.co/400x300/E8E8E8/333?text=Standard+1", "https://placehold.co/400x300/E8E8E8/333?text=Standard+2", "https://placehold.co/400x300/E8E8E8/333?text=Standard+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 10 – Wall Clocks */
+  {
+    name: "Wall Clocks",
+    emoji: "️",
+    badge: null,
+    desc: "Artistic resin wall clocks for your home",
+    priceRange: "₹799 – ₹2,999",
+    image: null,
+    waMsg: "Hi! I'm interested in Wall Clocks from Hastkala.",
+    tags: ["Clock", "Wall", "Decor"],
+    products: [
+      {
+        name: "Ocean Resin Wall Clock",
+        price: "₹1,299",
+        waMsg: "Hi! I'd like to order Ocean Resin Wall Clock (₹1,299)",
+        colors: [
+          { hex: "#1A6B8A", name: "Ocean Blue", images: ["https://placehold.co/400x300/1A6B8A/fff?text=Ocean+Blue+1", "https://placehold.co/400x300/1A6B8A/fff?text=Ocean+Blue+2", "https://placehold.co/400x300/1A6B8A/fff?text=Ocean+Blue+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }
+        ],
+        sizes: [
+          { label: "10in", images: ["https://placehold.co/400x300/E8E8E8/333?text=10in+1", "https://placehold.co/400x300/E8E8E8/333?text=10in+2", "https://placehold.co/400x300/E8E8E8/333?text=10in+3"] },
+          { label: "12in", images: ["https://placehold.co/400x300/E8E8E8/333?text=12in+1", "https://placehold.co/400x300/E8E8E8/333?text=12in+2", "https://placehold.co/400x300/E8E8E8/333?text=12in+3"] },
+          { label: "14in", images: ["https://placehold.co/400x300/E8E8E8/333?text=14in+1", "https://placehold.co/400x300/E8E8E8/333?text=14in+2", "https://placehold.co/400x300/E8E8E8/333?text=14in+3"] }
+        ]
+      },
+      {
+        name: "Personalised Name Wall Clock",
+        price: "₹1,999",
+        waMsg: "Hi! I'd like to order Personalised Name Wall Clock (₹1,999)",
+        colors: [
+          { hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "12in", images: ["https://placehold.co/400x300/E8E8E8/333?text=12in+1", "https://placehold.co/400x300/E8E8E8/333?text=12in+2", "https://placehold.co/400x300/E8E8E8/333?text=12in+3"] },
+          { label: "14in", images: ["https://placehold.co/400x300/E8E8E8/333?text=14in+1", "https://placehold.co/400x300/E8E8E8/333?text=14in+2", "https://placehold.co/400x300/E8E8E8/333?text=14in+3"] },
+          { label: "16in", images: ["https://placehold.co/400x300/E8E8E8/333?text=16in+1", "https://placehold.co/400x300/E8E8E8/333?text=16in+2", "https://placehold.co/400x300/E8E8E8/333?text=16in+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 11 – Bangles */
+  {
+    name: "Bangles",
+    emoji: "✦",
+    badge: null,
+    desc: "Gorgeous resin bangles with real flowers & glitter",
+    priceRange: "₹149 – ₹499",
+    image: null,
+    waMsg: "Hi! I'm interested in Bangles from Hastkala.",
+    tags: ["Bangle", "Jewellery", "Accessory"],
+    products: [
+      {
+        name: "Glitter Resin Bangle",
+        price: "₹149",
+        waMsg: "Hi! I'd like to order Glitter Resin Bangle (₹149)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] },
+          { hex: "#11998E", name: "Teal", images: ["https://placehold.co/400x300/11998E/fff?text=Teal+1", "https://placehold.co/400x300/11998E/fff?text=Teal+2", "https://placehold.co/400x300/11998E/fff?text=Teal+3"] }
+        ],
+        sizes: [
+          { label: "S (2.2in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+1", "https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+2", "https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+3"] },
+          { label: "M (2.4in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+1", "https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+2", "https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+3"] },
+          { label: "L (2.6in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+1", "https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+2", "https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+3"] }
+        ]
+      },
+      {
+        name: "Floral Dried Flower Bangle",
+        price: "₹249",
+        waMsg: "Hi! I'd like to order Floral Dried Flower Bangle (₹249)",
+        colors: [
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }
+        ],
+        sizes: [
+          { label: "S (2.2in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+1", "https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+2", "https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+3"] },
+          { label: "M (2.4in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+1", "https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+2", "https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+3"] },
+          { label: "L (2.6in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+1", "https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+2", "https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+3"] }
+        ]
+      },
+      {
+        name: "Bangle Set of 4",
+        price: "₹449",
+        waMsg: "Hi! I'd like to order Bangle Set of 4 (₹449)",
+        colors: [
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] },
+          { hex: "#11998E", name: "Teal", images: ["https://placehold.co/400x300/11998E/fff?text=Teal+1", "https://placehold.co/400x300/11998E/fff?text=Teal+2", "https://placehold.co/400x300/11998E/fff?text=Teal+3"] }
+        ],
+        sizes: [
+          { label: "S (2.2in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+1", "https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+2", "https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+3"] },
+          { label: "M (2.4in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+1", "https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+2", "https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+3"] },
+          { label: "L (2.6in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+1", "https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+2", "https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 12 – House Nameplates */
+  {
+    name: "House Nameplates",
+    emoji: "",
+    badge: "Popular",
+    desc: "Custom resin nameplates for your home entrance",
+    priceRange: "₹499 – ₹1,499",
+    image: null,
+    waMsg: "Hi! I'm interested in House Nameplates from Hastkala.",
+    tags: ["Nameplate", "Home", "Decor"],
+    products: [
+      {
+        name: "Classic Resin Nameplate",
+        price: "₹599",
+        waMsg: "Hi! I'd like to order Classic Resin Nameplate (₹599)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "Small (8in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+8in+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+3"] },
+          { label: "Medium (10in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+3"] },
+          { label: "Large (12in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+12in+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+3"] }
+        ]
+      },
+      {
+        name: "Floral Resin Nameplate",
+        price: "₹799",
+        waMsg: "Hi! I'd like to order Floral Resin Nameplate (₹799)",
+        colors: [
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "Medium (10in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+3"] },
+          { label: "Large (12in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+12in+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+3"] }
+        ]
+      },
+      {
+        name: "Premium Backlit Nameplate",
+        price: "₹1,299",
+        waMsg: "Hi! I'd like to order Premium Backlit Nameplate (₹1,299)",
+        colors: [
+          { hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }
+        ],
+        sizes: [
+          { label: "Large (12in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+12in+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+3"] },
+          { label: "XL (14in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=XL+14in+1", "https://placehold.co/400x300/E8E8E8/333?text=XL+14in+2", "https://placehold.co/400x300/E8E8E8/333?text=XL+14in+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 13 – Car Hangings */
+  {
+    name: "Car Hangings",
+    emoji: "",
+    badge: null,
+    desc: "Beautiful resin car hangings with dried florals",
+    priceRange: "₹149 – ₹449",
+    image: null,
+    waMsg: "Hi! I'm interested in Car Hangings from Hastkala.",
+    tags: ["Car", "Hanging", "Accessory"],
+    products: [
+      {
+        name: "Floral Resin Car Hanging",
+        price: "₹149",
+        waMsg: "Hi! I'd like to order Floral Resin Car Hanging (₹149)",
+        colors: [
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] }
+        ],
+        sizes: [
+          { label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] },
+          { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }
+        ]
+      },
+      {
+        name: "Personalised Name Hanging",
+        price: "₹199",
+        waMsg: "Hi! I'd like to order Personalised Name Hanging (₹199)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "Standard", images: ["https://placehold.co/400x300/E8E8E8/333?text=Standard+1", "https://placehold.co/400x300/E8E8E8/333?text=Standard+2", "https://placehold.co/400x300/E8E8E8/333?text=Standard+3"] }
+        ]
+      },
+      {
+        name: "Aromatic Resin Hanging",
+        price: "₹249",
+        waMsg: "Hi! I'd like to order Aromatic Resin Hanging (₹249)",
+        colors: [
+          { hex: "#11998E", name: "Teal", images: ["https://placehold.co/400x300/11998E/fff?text=Teal+1", "https://placehold.co/400x300/11998E/fff?text=Teal+2", "https://placehold.co/400x300/11998E/fff?text=Teal+3"] },
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }
+        ],
+        sizes: [
+          { label: "Standard", images: ["https://placehold.co/400x300/E8E8E8/333?text=Standard+1", "https://placehold.co/400x300/E8E8E8/333?text=Standard+2", "https://placehold.co/400x300/E8E8E8/333?text=Standard+3"] }
+        ]
+      }
+    ]
+  }
+];
+
+/* ---- OCCASIONS -------------------------------------------- */
+const OCCASIONS = [
+  /* 0 – Birthday */
+  {
+    name: "Birthday",
+    emoji: "",
+    color: "linear-gradient(135deg, #FF6B9D, #FF8E53)",
+    tags: ["Photo Frame", "Key Chain", "Personalised Gift"],
+    waMsg: "Hi! I'm looking for Birthday gift ideas from Hastkala.",
+    products: [
+      {
+        name: "Classic Resin Photo Frame",
+        price: "₹499",
+        waMsg: "Hi! I'd like to order Classic Resin Photo Frame for a Birthday (₹499)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] },
+          { hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] }
+        ],
+        sizes: [
+          { label: "4x6in", images: ["https://placehold.co/400x300/E8E8E8/333?text=4x6in+1", "https://placehold.co/400x300/E8E8E8/333?text=4x6in+2", "https://placehold.co/400x300/E8E8E8/333?text=4x6in+3"] },
+          { label: "5x7in", images: ["https://placehold.co/400x300/E8E8E8/333?text=5x7in+1", "https://placehold.co/400x300/E8E8E8/333?text=5x7in+2", "https://placehold.co/400x300/E8E8E8/333?text=5x7in+3"] },
+          { label: "8x10in", images: ["https://placehold.co/400x300/E8E8E8/333?text=8x10in+1", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+2", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+3"] }
+        ]
+      },
+      {
+        name: "Personalised Name Plaque",
+        price: "₹399",
+        waMsg: "Hi! I'd like to order Personalised Name Plaque for a Birthday (₹399)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] },
+          { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }
+        ],
+        sizes: [
+          { label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] },
+          { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] },
+          { label: "Large", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+3"] }
+        ]
+      },
+      {
+        name: "Glitter Resin Keychain",
+        price: "₹99",
+        waMsg: "Hi! I'd like to order Glitter Resin Keychain for a Birthday (₹99)",
+        colors: [
+          { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] },
+          { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] },
+          { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] },
+          { hex: "#11998E", name: "Teal", images: ["https://placehold.co/400x300/11998E/fff?text=Teal+1", "https://placehold.co/400x300/11998E/fff?text=Teal+2", "https://placehold.co/400x300/11998E/fff?text=Teal+3"] }
+        ],
+        sizes: [
+          { label: "S (2.2in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+1", "https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+2", "https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+3"] }
+        ]
+      }
+    ]
+  },
+
+  /* 1 – Anniversary */
+  {
+    name: "Anniversary",
+    emoji: "",
+    color: "linear-gradient(135deg, #C8506A, #D4AF37)",
+    tags: ["Photo Frame", "Rose Preservation", "Wall Clock"],
+    waMsg: "Hi! I'm looking for Anniversary gift ideas from Hastkala.",
+    products: [
+      { name: "Rose Bouquet Resin Frame", price: "₹1,299", waMsg: "Hi! I'd like to order Rose Bouquet Resin Frame for an Anniversary (₹1,299)", colors: [{ hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }], sizes: [{ label: "8x10in", images: ["https://placehold.co/400x300/E8E8E8/333?text=8x10in+1", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+2", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+3"] }, { label: "10x12in", images: ["https://placehold.co/400x300/E8E8E8/333?text=10x12in+1", "https://placehold.co/400x300/E8E8E8/333?text=10x12in+2", "https://placehold.co/400x300/E8E8E8/333?text=10x12in+3"] }] },
+      { name: "Personalised Name Wall Clock", price: "₹1,999", waMsg: "Hi! I'd like to order Personalised Name Wall Clock for an Anniversary (₹1,999)", colors: [{ hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }], sizes: [{ label: "12in", images: ["https://placehold.co/400x300/E8E8E8/333?text=12in+1", "https://placehold.co/400x300/E8E8E8/333?text=12in+2", "https://placehold.co/400x300/E8E8E8/333?text=12in+3"] }, { label: "14in", images: ["https://placehold.co/400x300/E8E8E8/333?text=14in+1", "https://placehold.co/400x300/E8E8E8/333?text=14in+2", "https://placehold.co/400x300/E8E8E8/333?text=14in+3"] }] },
+      { name: "Custom Resin Memento Box", price: "₹799", waMsg: "Hi! I'd like to order Custom Resin Memento Box for an Anniversary (₹799)", colors: [{ hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }], sizes: [{ label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] }, { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }] }
+    ]
+  },
+
+  /* 2 – Wedding */
+  {
+    name: "Wedding",
+    emoji: "",
+    color: "linear-gradient(135deg, #7B4FD8, #C8506A)",
+    tags: ["Varmala Preservation", "Engagement Platter", "Return Gifts"],
+    waMsg: "Hi! I'm looking for Wedding gift ideas from Hastkala.",
+    products: [
+      { name: "Classic Varmala Frame", price: "₹999", waMsg: "Hi! I'd like to order Classic Varmala Frame for a Wedding (₹999)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }], sizes: [{ label: "10x12in", images: ["https://placehold.co/400x300/E8E8E8/333?text=10x12in+1", "https://placehold.co/400x300/E8E8E8/333?text=10x12in+2", "https://placehold.co/400x300/E8E8E8/333?text=10x12in+3"] }, { label: "12x15in", images: ["https://placehold.co/400x300/E8E8E8/333?text=12x15in+1", "https://placehold.co/400x300/E8E8E8/333?text=12x15in+2", "https://placehold.co/400x300/E8E8E8/333?text=12x15in+3"] }] },
+      { name: "Ring Platter with Florals", price: "₹699", waMsg: "Hi! I'd like to order Ring Platter with Florals for a Wedding (₹699)", colors: [{ hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#FFD1DC", name: "Blush", images: ["https://placehold.co/400x300/FFD1DC/333?text=Blush+1", "https://placehold.co/400x300/FFD1DC/333?text=Blush+2", "https://placehold.co/400x300/FFD1DC/333?text=Blush+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }], sizes: [{ label: "Small (6in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+6in+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+6in+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+6in+3"] }, { label: "Medium (8in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+8in+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+8in+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+8in+3"] }] },
+      { name: "Mini Resin Keychain Bulk", price: "₹149/piece", waMsg: "Hi! I'd like to order Mini Resin Keychain Bulk for Wedding return gifts (₹149/piece)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }, { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }], sizes: [{ label: "Round", images: ["https://placehold.co/400x300/E8E8E8/333?text=Round+1", "https://placehold.co/400x300/E8E8E8/333?text=Round+2", "https://placehold.co/400x300/E8E8E8/333?text=Round+3"] }, { label: "Heart", images: ["https://placehold.co/400x300/E8E8E8/333?text=Heart+1", "https://placehold.co/400x300/E8E8E8/333?text=Heart+2", "https://placehold.co/400x300/E8E8E8/333?text=Heart+3"] }, { label: "Star", images: ["https://placehold.co/400x300/E8E8E8/333?text=Star+1", "https://placehold.co/400x300/E8E8E8/333?text=Star+2", "https://placehold.co/400x300/E8E8E8/333?text=Star+3"] }] }
+    ]
+  },
+
+  /* 3 – Diwali */
+  {
+    name: "Diwali",
+    emoji: "杖",
+    color: "linear-gradient(135deg, #F7971E, #D4AF37)",
+    tags: ["Pooja Thali", "Wall Clock", "Nameplate"],
+    waMsg: "Hi! I'm looking for Diwali gift ideas from Hastkala.",
+    products: [
+      { name: "Classic Gold Thali", price: "₹599", waMsg: "Hi! I'd like to order Classic Gold Thali for Diwali (₹599)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }], sizes: [{ label: "Small (8in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+8in+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+3"] }, { label: "Medium (10in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+3"] }, { label: "Large (12in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+12in+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+3"] }] },
+      { name: "Classic Resin Nameplate", price: "₹599", waMsg: "Hi! I'd like to order Classic Resin Nameplate for Diwali (₹599)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }], sizes: [{ label: "Small (8in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+8in+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+3"] }, { label: "Medium (10in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+3"] }] },
+      { name: "Floral Resin Car Hanging", price: "₹149", waMsg: "Hi! I'd like to order Floral Resin Car Hanging for Diwali (₹149)", colors: [{ hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] }], sizes: [{ label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] }, { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }] }
+    ]
+  },
+
+  /* 4 – Rakhi */
+  {
+    name: "Rakhi",
+    emoji: "臨",
+    color: "linear-gradient(135deg, #11998E, #38EF7D)",
+    tags: ["Key Chain", "Personalised Gift", "Jewellery"],
+    waMsg: "Hi! I'm looking for Rakhi gift ideas from Hastkala.",
+    products: [
+      { name: "Personalised Name Keychain", price: "₹179", waMsg: "Hi! I'd like to order Personalised Name Keychain for Rakhi (₹179)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }], sizes: [{ label: "Standard", images: ["https://placehold.co/400x300/E8E8E8/333?text=Standard+1", "https://placehold.co/400x300/E8E8E8/333?text=Standard+2", "https://placehold.co/400x300/E8E8E8/333?text=Standard+3"] }] },
+      { name: "Resin Ring", price: "₹199", waMsg: "Hi! I'd like to order Resin Ring for Rakhi (₹199)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }, { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] }], sizes: [{ label: "Size 5", images: ["https://placehold.co/400x300/E8E8E8/333?text=Size+5+1", "https://placehold.co/400x300/E8E8E8/333?text=Size+5+2", "https://placehold.co/400x300/E8E8E8/333?text=Size+5+3"] }, { label: "Size 6", images: ["https://placehold.co/400x300/E8E8E8/333?text=Size+6+1", "https://placehold.co/400x300/E8E8E8/333?text=Size+6+2", "https://placehold.co/400x300/E8E8E8/333?text=Size+6+3"] }, { label: "Size 7", images: ["https://placehold.co/400x300/E8E8E8/333?text=Size+7+1", "https://placehold.co/400x300/E8E8E8/333?text=Size+7+2", "https://placehold.co/400x300/E8E8E8/333?text=Size+7+3"] }] },
+      { name: "Custom Resin Memento Box", price: "₹799", waMsg: "Hi! I'd like to order Custom Resin Memento Box for Rakhi (₹799)", colors: [{ hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }], sizes: [{ label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] }, { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }] }
+    ]
+  },
+
+  /* 5 – Gift for Girlfriend */
+  {
+    name: "Gift for Girlfriend",
+    emoji: "",
+    color: "linear-gradient(135deg, #E96CD8, #FF6B9D)",
+    tags: ["Rose Preservation", "Jewellery", "Bangles"],
+    waMsg: "Hi! I'm looking for Gift for Girlfriend ideas from Hastkala.",
+    products: [
+      { name: "Single Rose in Resin Block", price: "₹699", waMsg: "Hi! I'd like to order Single Rose in Resin Block as a gift (₹699)", colors: [{ hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }], sizes: [{ label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] }, { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }] },
+      { name: "Resin Drop Earrings", price: "₹249", waMsg: "Hi! I'd like to order Resin Drop Earrings as a gift (₹249)", colors: [{ hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] }, { hex: "#11998E", name: "Teal", images: ["https://placehold.co/400x300/11998E/fff?text=Teal+1", "https://placehold.co/400x300/11998E/fff?text=Teal+2", "https://placehold.co/400x300/11998E/fff?text=Teal+3"] }], sizes: [{ label: "Standard", images: ["https://placehold.co/400x300/E8E8E8/333?text=Standard+1", "https://placehold.co/400x300/E8E8E8/333?text=Standard+2", "https://placehold.co/400x300/E8E8E8/333?text=Standard+3"] }] },
+      { name: "Floral Dried Flower Bangle", price: "₹249", waMsg: "Hi! I'd like to order Floral Dried Flower Bangle as a gift (₹249)", colors: [{ hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }], sizes: [{ label: "S (2.2in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+1", "https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+2", "https://placehold.co/400x300/E8E8E8/333?text=S+2.2in+3"] }, { label: "M (2.4in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+1", "https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+2", "https://placehold.co/400x300/E8E8E8/333?text=M+2.4in+3"] }, { label: "L (2.6in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+1", "https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+2", "https://placehold.co/400x300/E8E8E8/333?text=L+2.6in+3"] }] }
+    ]
+  },
+
+  /* 6 – Housewarming */
+  {
+    name: "Housewarming",
+    emoji: "",
+    color: "linear-gradient(135deg, #4776E6, #8E54E9)",
+    tags: ["Nameplate", "Wall Clock", "Photo Frame"],
+    waMsg: "Hi! I'm looking for Housewarming gift ideas from Hastkala.",
+    products: [
+      { name: "Classic Resin Nameplate", price: "₹599", waMsg: "Hi! I'd like to order Classic Resin Nameplate for Housewarming (₹599)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }], sizes: [{ label: "Small (8in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+8in+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+3"] }, { label: "Medium (10in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+3"] }, { label: "Large (12in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+12in+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+3"] }] },
+      { name: "Ocean Resin Wall Clock", price: "₹1,299", waMsg: "Hi! I'd like to order Ocean Resin Wall Clock for Housewarming (₹1,299)", colors: [{ hex: "#1A6B8A", name: "Ocean Blue", images: ["https://placehold.co/400x300/1A6B8A/fff?text=Ocean+Blue+1", "https://placehold.co/400x300/1A6B8A/fff?text=Ocean+Blue+2", "https://placehold.co/400x300/1A6B8A/fff?text=Ocean+Blue+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }], sizes: [{ label: "10in", images: ["https://placehold.co/400x300/E8E8E8/333?text=10in+1", "https://placehold.co/400x300/E8E8E8/333?text=10in+2", "https://placehold.co/400x300/E8E8E8/333?text=10in+3"] }, { label: "12in", images: ["https://placehold.co/400x300/E8E8E8/333?text=12in+1", "https://placehold.co/400x300/E8E8E8/333?text=12in+2", "https://placehold.co/400x300/E8E8E8/333?text=12in+3"] }, { label: "14in", images: ["https://placehold.co/400x300/E8E8E8/333?text=14in+1", "https://placehold.co/400x300/E8E8E8/333?text=14in+2", "https://placehold.co/400x300/E8E8E8/333?text=14in+3"] }] },
+      { name: "Classic Resin Photo Frame", price: "₹499", waMsg: "Hi! I'd like to order Classic Resin Photo Frame for Housewarming (₹499)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }], sizes: [{ label: "4x6in", images: ["https://placehold.co/400x300/E8E8E8/333?text=4x6in+1", "https://placehold.co/400x300/E8E8E8/333?text=4x6in+2", "https://placehold.co/400x300/E8E8E8/333?text=4x6in+3"] }, { label: "5x7in", images: ["https://placehold.co/400x300/E8E8E8/333?text=5x7in+1", "https://placehold.co/400x300/E8E8E8/333?text=5x7in+2", "https://placehold.co/400x300/E8E8E8/333?text=5x7in+3"] }, { label: "8x10in", images: ["https://placehold.co/400x300/E8E8E8/333?text=8x10in+1", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+2", "https://placehold.co/400x300/E8E8E8/333?text=8x10in+3"] }] }
+    ]
+  },
+
+  /* 7 – Valentine's Day */
+  {
+    name: "Valentine's Day",
+    emoji: "❤️",
+    color: "linear-gradient(135deg, #FF416C, #FF4B2B)",
+    tags: ["Rose Preservation", "Key Chain", "Personalised Gift"],
+    waMsg: "Hi! I'm looking for Valentine's Day gift ideas from Hastkala.",
+    products: [
+      { name: "Single Rose in Resin Block", price: "₹699", waMsg: "Hi! I'd like to order Single Rose in Resin Block for Valentine's Day (₹699)", colors: [{ hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }], sizes: [{ label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] }, { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }] },
+      { name: "Resin Pendant Necklace", price: "₹399", waMsg: "Hi! I'd like to order Resin Pendant Necklace for Valentine's Day (₹399)", colors: [{ hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }], sizes: [{ label: "Round", images: ["https://placehold.co/400x300/E8E8E8/333?text=Round+1", "https://placehold.co/400x300/E8E8E8/333?text=Round+2", "https://placehold.co/400x300/E8E8E8/333?text=Round+3"] }, { label: "Oval", images: ["https://placehold.co/400x300/E8E8E8/333?text=Oval+1", "https://placehold.co/400x300/E8E8E8/333?text=Oval+2", "https://placehold.co/400x300/E8E8E8/333?text=Oval+3"] }, { label: "Teardrop", images: ["https://placehold.co/400x300/E8E8E8/333?text=Teardrop+1", "https://placehold.co/400x300/E8E8E8/333?text=Teardrop+2", "https://placehold.co/400x300/E8E8E8/333?text=Teardrop+3"] }] },
+      { name: "Personalised Name Keychain", price: "₹179", waMsg: "Hi! I'd like to order Personalised Name Keychain for Valentine's Day (₹179)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }], sizes: [{ label: "Standard", images: ["https://placehold.co/400x300/E8E8E8/333?text=Standard+1", "https://placehold.co/400x300/E8E8E8/333?text=Standard+2", "https://placehold.co/400x300/E8E8E8/333?text=Standard+3"] }] }
+    ]
+  },
+
+  /* 8 – Baby Shower */
+  {
+    name: "Baby Shower",
+    emoji: "",
+    color: "linear-gradient(135deg, #89F7FE, #66A6FF)",
+    tags: ["Return Gifts", "Photo Frame", "Personalised Gift"],
+    waMsg: "Hi! I'm looking for Baby Shower gift ideas from Hastkala.",
+    products: [
+      { name: "Classic Resin Photo Frame", price: "₹499", waMsg: "Hi! I'd like to order Classic Resin Photo Frame for a Baby Shower (₹499)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }], sizes: [{ label: "4x6in", images: ["https://placehold.co/400x300/E8E8E8/333?text=4x6in+1", "https://placehold.co/400x300/E8E8E8/333?text=4x6in+2", "https://placehold.co/400x300/E8E8E8/333?text=4x6in+3"] }, { label: "5x7in", images: ["https://placehold.co/400x300/E8E8E8/333?text=5x7in+1", "https://placehold.co/400x300/E8E8E8/333?text=5x7in+2", "https://placehold.co/400x300/E8E8E8/333?text=5x7in+3"] }] },
+      { name: "Custom Resin Memento Box", price: "₹799", waMsg: "Hi! I'd like to order Custom Resin Memento Box for a Baby Shower (₹799)", colors: [{ hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }], sizes: [{ label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] }, { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }] },
+      { name: "Mini Resin Keychain Bulk", price: "₹149/piece", waMsg: "Hi! I'd like to order Mini Resin Keychain Bulk for Baby Shower favours (₹149/piece)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }, { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }], sizes: [{ label: "Round", images: ["https://placehold.co/400x300/E8E8E8/333?text=Round+1", "https://placehold.co/400x300/E8E8E8/333?text=Round+2", "https://placehold.co/400x300/E8E8E8/333?text=Round+3"] }, { label: "Heart", images: ["https://placehold.co/400x300/E8E8E8/333?text=Heart+1", "https://placehold.co/400x300/E8E8E8/333?text=Heart+2", "https://placehold.co/400x300/E8E8E8/333?text=Heart+3"] }] }
+    ]
+  },
+
+  /* 9 – Corporate Gifting */
+  {
+    name: "Corporate Gifting",
+    emoji: "",
+    color: "linear-gradient(135deg, #2C3E50, #4CA1AF)",
+    tags: ["Key Chain", "Nameplate", "Wall Clock"],
+    waMsg: "Hi! I'm looking for Corporate Gifting ideas from Hastkala.",
+    products: [
+      { name: "Personalised Name Keychain Bulk", price: "₹149/piece", waMsg: "Hi! I'd like to order Personalised Name Keychain Bulk for Corporate Gifting (₹149/piece)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }], sizes: [{ label: "Standard", images: ["https://placehold.co/400x300/E8E8E8/333?text=Standard+1", "https://placehold.co/400x300/E8E8E8/333?text=Standard+2", "https://placehold.co/400x300/E8E8E8/333?text=Standard+3"] }] },
+      { name: "Classic Resin Nameplate", price: "₹599", waMsg: "Hi! I'd like to order Classic Resin Nameplate for Corporate Gifting (₹599)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#2C1810", name: "Brown", images: ["https://placehold.co/400x300/2C1810/fff?text=Brown+1", "https://placehold.co/400x300/2C1810/fff?text=Brown+2", "https://placehold.co/400x300/2C1810/fff?text=Brown+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }], sizes: [{ label: "Small (8in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+8in+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+3"] }, { label: "Medium (10in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+3"] }] },
+      { name: "Ocean Resin Wall Clock", price: "₹1,299", waMsg: "Hi! I'd like to order Ocean Resin Wall Clock for Corporate Gifting (₹1,299)", colors: [{ hex: "#1A6B8A", name: "Ocean Blue", images: ["https://placehold.co/400x300/1A6B8A/fff?text=Ocean+Blue+1", "https://placehold.co/400x300/1A6B8A/fff?text=Ocean+Blue+2", "https://placehold.co/400x300/1A6B8A/fff?text=Ocean+Blue+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }], sizes: [{ label: "10in", images: ["https://placehold.co/400x300/E8E8E8/333?text=10in+1", "https://placehold.co/400x300/E8E8E8/333?text=10in+2", "https://placehold.co/400x300/E8E8E8/333?text=10in+3"] }, { label: "12in", images: ["https://placehold.co/400x300/E8E8E8/333?text=12in+1", "https://placehold.co/400x300/E8E8E8/333?text=12in+2", "https://placehold.co/400x300/E8E8E8/333?text=12in+3"] }] }
+    ]
+  },
+
+  /* 10 – Festivals */
+  {
+    name: "Festivals",
+    emoji: "",
+    color: "linear-gradient(135deg, #F953C6, #B91D73)",
+    tags: ["Pooja Thali", "Return Gifts", "Car Hangings"],
+    waMsg: "Hi! I'm looking for Festival gift ideas from Hastkala.",
+    products: [
+      { name: "Classic Gold Thali", price: "₹599", waMsg: "Hi! I'd like to order Classic Gold Thali for Festivals (₹599)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }], sizes: [{ label: "Small (8in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+8in+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+8in+3"] }, { label: "Medium (10in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+10in+3"] }, { label: "Large (12in)", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+12in+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+12in+3"] }] },
+      { name: "Floral Resin Car Hanging", price: "₹149", waMsg: "Hi! I'd like to order Floral Resin Car Hanging for Festivals (₹149)", colors: [{ hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] }], sizes: [{ label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] }, { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }] },
+      { name: "Mini Resin Keychain Bulk", price: "₹149/piece", waMsg: "Hi! I'd like to order Mini Resin Keychain Bulk for Festival gifts (₹149/piece)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }, { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }], sizes: [{ label: "Round", images: ["https://placehold.co/400x300/E8E8E8/333?text=Round+1", "https://placehold.co/400x300/E8E8E8/333?text=Round+2", "https://placehold.co/400x300/E8E8E8/333?text=Round+3"] }, { label: "Heart", images: ["https://placehold.co/400x300/E8E8E8/333?text=Heart+1", "https://placehold.co/400x300/E8E8E8/333?text=Heart+2", "https://placehold.co/400x300/E8E8E8/333?text=Heart+3"] }, { label: "Star", images: ["https://placehold.co/400x300/E8E8E8/333?text=Star+1", "https://placehold.co/400x300/E8E8E8/333?text=Star+2", "https://placehold.co/400x300/E8E8E8/333?text=Star+3"] }] }
+    ]
+  },
+
+  /* 11 – Just Because  */
+  {
+    name: "Just Because ",
+    emoji: "",
+    color: "linear-gradient(135deg, #D4AF37, #C8506A)",
+    tags: ["Anything personalised!"],
+    waMsg: "Hi! I'm looking for a thoughtful gift from Hastkala – just because!",
+    products: [
+      { name: "Custom Resin Memento Box", price: "₹799", waMsg: "Hi! I'd like to order Custom Resin Memento Box – just because! (₹799)", colors: [{ hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }], sizes: [{ label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] }, { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }] },
+      { name: "Personalised Name Plaque", price: "₹399", waMsg: "Hi! I'd like to order Personalised Name Plaque – just because! (₹399)", colors: [{ hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }, { hex: "#C8506A", name: "Rose", images: ["https://placehold.co/400x300/C8506A/fff?text=Rose+1", "https://placehold.co/400x300/C8506A/fff?text=Rose+2", "https://placehold.co/400x300/C8506A/fff?text=Rose+3"] }, { hex: "#7B4FD8", name: "Purple", images: ["https://placehold.co/400x300/7B4FD8/fff?text=Purple+1", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+2", "https://placehold.co/400x300/7B4FD8/fff?text=Purple+3"] }], sizes: [{ label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] }, { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }, { label: "Large", images: ["https://placehold.co/400x300/E8E8E8/333?text=Large+1", "https://placehold.co/400x300/E8E8E8/333?text=Large+2", "https://placehold.co/400x300/E8E8E8/333?text=Large+3"] }] },
+      { name: "Rose Petal Resin Tray", price: "₹899", waMsg: "Hi! I'd like to order Rose Petal Resin Tray – just because! (₹899)", colors: [{ hex: "#FF6B9D", name: "Pink", images: ["https://placehold.co/400x300/FF6B9D/fff?text=Pink+1", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+2", "https://placehold.co/400x300/FF6B9D/fff?text=Pink+3"] }, { hex: "#FFFFFF", name: "White", images: ["https://placehold.co/400x300/FFFFFF/333?text=White+1", "https://placehold.co/400x300/FFFFFF/333?text=White+2", "https://placehold.co/400x300/FFFFFF/333?text=White+3"] }, { hex: "#D4AF37", name: "Gold", images: ["https://placehold.co/400x300/D4AF37/fff?text=Gold+1", "https://placehold.co/400x300/D4AF37/fff?text=Gold+2", "https://placehold.co/400x300/D4AF37/fff?text=Gold+3"] }], sizes: [{ label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] }, { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }] }
+    ]
+  }
+];
+
+/* ---- Render Occasion Cards -------------------------------- */
+function buildOccasionCards() {
+  const grid = document.getElementById('occ-grid');
+  if (!grid) return;
+
+  grid.innerHTML = OCCASIONS.map((occ, index) => {
+    const tagsHTML = occ.tags.map(t => `<span class="occ-tag">${t}</span>`).join('');
+    const count = occ.products ? occ.products.length : 0;
+    const label = count > 0 ? `View ${count} Gift Ideas →` : 'Explore →';
+
+    return `
+      <div class="occ-card" style="--occ-grad: ${occ.color}"
+           onclick="openOccasionModal(${index})"
+           role="button" tabindex="0"
+           aria-label="View ${occ.name} gift ideas"
+           onkeydown="if(event.key==='Enter'||event.key===' ')openOccasionModal(${index})">
+        <div class="occ-inner">
+          <div class="occ-emoji">${occ.emoji}</div>
+          <h3>${occ.name}</h3>
+          <div class="occ-tags">${tagsHTML}</div>
+          <span class="occ-btn">${label}</span>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* ---- Render Category Cards -------------------------------- */
+function buildCategoryCards() {
+  const grid = document.getElementById('cat-grid');
+  if (!grid) return;
+
+  grid.innerHTML = CATEGORIES.map((cat, index) => {
+    const imageHTML = cat.image
+      ? `<img src="${cat.image}" alt="${cat.name}" loading="lazy" />`
+      : `<div class="cat-placeholder">
+           <span class="cat-emoji">${cat.emoji}</span>
+           <p>Image coming soon</p>
+         </div>`;
+
+    const badgeHTML = cat.badge
+      ? `<div class="cat-badge">${cat.badge}</div>`
+      : '';
+
+    const count = cat.products ? cat.products.length : 0;
+    const label = count > 0 ? `${count} Products` : 'View Details';
+
+    return `
+      <div class="cat-card"
+           onclick="openModal(${index})"
+           role="button" tabindex="0"
+           aria-label="View ${cat.name} products"
+           onkeydown="if(event.key==='Enter'||event.key===' ')openModal(${index})">
+        <div class="cat-img-wrap">
+          ${imageHTML}
+          ${badgeHTML}
+        </div>
+        <div class="cat-body">
+          <h3>${cat.name}</h3>
+          <p>${cat.desc}</p>
+          <div class="cat-footer">
+            <span class="cat-price">${cat.priceRange}</span>
+            <span class="cat-view-btn">${label} →</span>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* ---- Product Modal ---------------------------------------- */
+/* ---- Variant Helpers --------------------------------------
+   Colors/sizes support THREE formats (all work together):
+
+   SIMPLE (current – placeholder changes on click):
+     colors: [
+          { hex: "#D4AF37", name: "#D4AF37", images: ["https://placehold.co/400x300/D4AF37/fff?text=D4AF37+1", "https://placehold.co/400x300/D4AF37/fff?text=D4AF37+2", "https://placehold.co/400x300/D4AF37/fff?text=D4AF37+3"] },
+          { hex: "#FF6B9D", name: "#FF6B9D", images: ["https://placehold.co/400x300/FF6B9D/fff?text=FF6B9D+1", "https://placehold.co/400x300/FF6B9D/fff?text=FF6B9D+2", "https://placehold.co/400x300/FF6B9D/fff?text=FF6B9D+3"] }
+        ]
+     sizes: [
+          { label: "Small", images: ["https://placehold.co/400x300/E8E8E8/333?text=Small+1", "https://placehold.co/400x300/E8E8E8/333?text=Small+2", "https://placehold.co/400x300/E8E8E8/333?text=Small+3"] },
+          { label: "Medium", images: ["https://placehold.co/400x300/E8E8E8/333?text=Medium+1", "https://placehold.co/400x300/E8E8E8/333?text=Medium+2", "https://placehold.co/400x300/E8E8E8/333?text=Medium+3"] }
+        ]
+
+   SINGLE IMAGE per variant:
+     colors: [
+       { hex: "#D4AF37", name: "Gold",  image: "images/gold.jpg" },
+       { hex: "#FF6B9D", name: "Pink",  image: "images/pink.jpg" }
+     ]
+     sizes: [
+       { label: "Small",  image: "images/small.jpg" },
+       { label: "Medium", image: "images/medium.jpg" }
+     ]
+
+   MULTIPLE IMAGES per variant (carousel with arrows):
+     colors: [
+       { hex: "#D4AF37", name: "Gold",  images: ["gold-1.jpg", "gold-2.jpg", "gold-3.jpg"] },
+       { hex: "#FF6B9D", name: "Pink",  images: ["pink-1.jpg", "pink-2.jpg"] }
+     ]
+     sizes: [
+       { label: "Small",  images: ["small-front.jpg", "small-side.jpg"] },
+       { label: "Medium", images: ["medium-front.jpg", "medium-back.jpg"] }
+     ]
+
+   Mix & match any format per product. Add unlimited colors/sizes/images.
+   ---------------------------------------------------------- */
+
+function normalizeColors(colors) {
+  if (!colors || !colors.length) return [];
+  return colors.map(c => {
+    if (typeof c === 'string') return { hex: c, name: c, images: [] };
+    const imgs = c.images || (c.image ? [c.image] : []);
+    return { hex: c.hex || '#ccc', name: c.name || c.hex, images: imgs };
+  });
+}
+
+function normalizeSizes(sizes) {
+  if (!sizes || !sizes.length) return [];
+  return sizes.map(s => {
+    if (typeof s === 'string') return { label: s, images: [] };
+    const imgs = s.images || (s.image ? [s.image] : []);
+    return { label: s.label || '', images: imgs };
+  });
+}
+
+function buildCarouselHTML(images, emoji, colorHex) {
+  if (!images || images.length === 0) {
+    const bg = colorHex ? `style="background:${colorHex}"` : '';
+    const cls = colorHex ? 'prod-placeholder prod-placeholder--colored' : 'prod-placeholder';
+    return `<div class="${cls}" ${bg}><span>${emoji}</span></div>`;
+  }
+  if (images.length === 1) {
+    return `<img src="${images[0]}" alt="Product" loading="lazy" />`;
+  }
+  const slides = images.map((src, i) =>
+    `<img src="${src}" alt="Product photo ${i + 1}" loading="lazy"
+          class="carousel-slide${i === 0 ? ' active' : ''}" data-slide-idx="${i}" />`
+  ).join('');
+  const dots = images.map((_, i) =>
+    `<span class="carousel-dot${i === 0 ? ' active' : ''}" data-dot-idx="${i}"></span>`
+  ).join('');
+  return `
+    <div class="prod-carousel" data-current="0" data-total="${images.length}">
+      ${slides}
+      <button class="carousel-arrow carousel-prev" aria-label="Previous image">\u2039</button>
+      <button class="carousel-arrow carousel-next" aria-label="Next image">\u203a</button>
+      <div class="carousel-dots">${dots}</div>
+    </div>`;
+}
+
+function updateProductImage(card, images, colorHex, emoji) {
+  const wrap = card.querySelector('.prod-img-wrap');
+  wrap.innerHTML = buildCarouselHTML(images, emoji, colorHex);
+  initCarouselInCard(card);
+}
+
+function initCarouselInCard(card) {
+  const carousel = card.querySelector('.prod-carousel');
+  if (!carousel) return;
+  const total = parseInt(carousel.dataset.total);
+  const goTo = (idx) => {
+    carousel.dataset.current = idx;
+    carousel.querySelectorAll('.carousel-slide').forEach(sl => {
+      sl.classList.toggle('active', parseInt(sl.dataset.slideIdx) === idx);
+    });
+    carousel.querySelectorAll('.carousel-dot').forEach(d => {
+      d.classList.toggle('active', parseInt(d.dataset.dotIdx) === idx);
+    });
+  };
+  carousel.querySelector('.carousel-prev')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    goTo((parseInt(carousel.dataset.current) - 1 + total) % total);
+  });
+  carousel.querySelector('.carousel-next')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    goTo((parseInt(carousel.dataset.current) + 1) % total);
+  });
+  carousel.querySelectorAll('.carousel-dot').forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goTo(parseInt(dot.dataset.dotIdx));
+    });
+  });
+}
+
+function openProductModal(item) {
+  const overlay  = document.getElementById('product-modal');
+  const waCustom = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(item.waMsg)}`;
+  const subtitle = item.desc || (item.tags ? item.tags.join(' \u00b7 ') : '');
+
+  document.getElementById('modal-emoji').textContent    = item.emoji;
+  document.getElementById('modal-title').textContent    = item.name;
+  document.getElementById('modal-subtitle').textContent = subtitle;
+
+  const customLink = overlay.querySelector('.modal-custom-link');
+  if (customLink) customLink.href = waCustom;
+
+  const productsEl = document.getElementById('modal-products');
+
+  if (!item.products || item.products.length === 0) {
+    productsEl.innerHTML = `
+      <div class="modal-empty">
+        <p>Products coming soon! Chat with us to find out what's available.</p>
+        <a href="${waCustom}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+      </div>`;
+  } else {
+    productsEl.innerHTML = item.products.map((prod, pIdx) => {
+      const waUrl = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(prod.waMsg)}`;
+      const colors = normalizeColors(prod.colors);
+      const sizes  = normalizeSizes(prod.sizes);
+
+      // Default images: product.images > product.image > first color's images > empty
+      let defaultImages = [];
+      if (prod.images && prod.images.length) {
+        defaultImages = prod.images;
+      } else if (prod.image) {
+        defaultImages = [prod.image];
+      } else if (colors.length && colors[0].images.length) {
+        defaultImages = colors[0].images;
+      }
+
+      const defaultHex = colors.length ? colors[0].hex : null;
+      const imgHTML = buildCarouselHTML(defaultImages, item.emoji, defaultHex);
+
+      const colorHTML = colors.length
+        ? `<div class="prod-colors">${colors.map((c, cIdx) =>
+            `<span class="color-swatch${cIdx === 0 ? ' active' : ''}"
+                   style="background:${c.hex}"
+                   title="${c.name}"
+                   data-color-hex="${c.hex}"
+                   data-color-images='${JSON.stringify(c.images)}'
+                   role="button" tabindex="0"
+                   aria-label="Select color ${c.name}"></span>`
+          ).join('')}</div>`
+        : '';
+
+      const sizeHTML = sizes.length
+        ? `<div class="prod-sizes">${sizes.map((s, sIdx) =>
+            `<span class="size-chip${sIdx === 0 ? ' active' : ''}"
+                   data-size-images='${JSON.stringify(s.images)}'
+                   role="button" tabindex="0"
+                   aria-label="Select size ${s.label}">${s.label}</span>`
+          ).join('')}</div>`
+        : '';
+
+      return `
+        <div class="prod-card" data-prod-idx="${pIdx}" data-emoji="${item.emoji}">
+          <div class="prod-img-wrap">${imgHTML}</div>
+          <div class="prod-body">
+            <h4>${prod.name}</h4>
+            <div class="prod-price">${prod.price}</div>
+            ${colorHTML}
+            ${sizeHTML}
+            <a class="prod-wa-btn" href="${waUrl}" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="" />
+              Order on WhatsApp
+            </a>
+          </div>
+        </div>`;
+    }).join('');
+
+    // Init carousels
+    productsEl.querySelectorAll('.prod-card').forEach(card => initCarouselInCard(card));
+
+    // Color swatch click → switch carousel images
+    productsEl.querySelectorAll('.color-swatch').forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        const card   = swatch.closest('.prod-card');
+        const emoji  = card.dataset.emoji;
+        const hex    = swatch.dataset.colorHex;
+        const images = JSON.parse(swatch.dataset.colorImages || '[]');
+
+        card.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+        swatch.classList.add('active');
+        updateProductImage(card, images, hex, emoji);
+      });
+    });
+
+    // Size chip click → switch carousel images
+    productsEl.querySelectorAll('.size-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const card   = chip.closest('.prod-card');
+        const emoji  = card.dataset.emoji;
+        const images = JSON.parse(chip.dataset.sizeImages || '[]');
+
+        card.querySelectorAll('.size-chip').forEach(s => s.classList.remove('active'));
+        chip.classList.add('active');
+
+        if (images.length) {
+          const activeColor = card.querySelector('.color-swatch.active');
+          const hex = activeColor ? activeColor.dataset.colorHex : null;
+          updateProductImage(card, images, hex, emoji);
+        }
+      });
+    });
+    // Image click → open lightbox (ignore clicks on carousel arrows/dots)
+    productsEl.querySelectorAll('.prod-img-wrap').forEach(wrap => {
+      // Add zoom button
+      const zoomBtn = document.createElement('button');
+      zoomBtn.className = 'prod-zoom-btn';
+      zoomBtn.innerHTML = '&#x1F50D;';
+      zoomBtn.setAttribute('aria-label', 'View full size');
+      zoomBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        handleImageClick(wrap);
+      });
+      wrap.appendChild(zoomBtn);
+    });
+  }
+
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('modal-close').focus(), 80);
+}
+
+function openModal(catIndex) {
+  openProductModal(CATEGORIES[catIndex]);
+}
+
+function openOccasionModal(occIndex) {
+  openProductModal(OCCASIONS[occIndex]);
+}
+
+function closeModal() {
+  const overlay = document.getElementById('product-modal');
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function initModal() {
+  const overlay = document.getElementById('product-modal');
+  if (!overlay) return;
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('lightbox').classList.contains('open')) closeLightbox();
+      else if (overlay.classList.contains('open')) closeModal();
+    }
+  });
+}
+
+/* ---- Lightbox (full-screen image viewer) ------------------ */
+let lbImages = [];
+let lbCurrent = 0;
+
+function openLightbox(images, startIdx) {
+  if (!images || images.length === 0) return;
+  lbImages = images;
+  lbCurrent = startIdx || 0;
+  renderLightbox();
+  const lb = document.getElementById('lightbox');
+  lb.classList.add('open');
+  lb.setAttribute('aria-hidden', 'false');
+}
+
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('open');
+  lb.setAttribute('aria-hidden', 'true');
+}
+
+function renderLightbox() {
+  const wrap = document.getElementById('lightbox-img');
+  const counter = document.getElementById('lightbox-counter');
+  const dotsEl = document.getElementById('lightbox-dots');
+
+  wrap.innerHTML = `<img src="${lbImages[lbCurrent]}" alt="Product photo ${lbCurrent + 1}" />`;
+  counter.textContent = `${lbCurrent + 1} / ${lbImages.length}`;
+
+  if (lbImages.length > 1) {
+    dotsEl.innerHTML = lbImages.map((_, i) =>
+      `<span class="lightbox-dot${i === lbCurrent ? ' active' : ''}" data-lb-idx="${i}"></span>`
+    ).join('');
+    dotsEl.querySelectorAll('.lightbox-dot').forEach(dot => {
+      dot.addEventListener('click', () => { lbCurrent = parseInt(dot.dataset.lbIdx); renderLightbox(); });
+    });
+  } else {
+    dotsEl.innerHTML = '';
+  }
+}
+
+function initLightbox() {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-prev').addEventListener('click', () => {
+    lbCurrent = (lbCurrent - 1 + lbImages.length) % lbImages.length;
+    renderLightbox();
+  });
+  document.getElementById('lightbox-next').addEventListener('click', () => {
+    lbCurrent = (lbCurrent + 1) % lbImages.length;
+    renderLightbox();
+  });
+}
+
+/* Opens lightbox from a product card's image area */
+function handleImageClick(wrap) {
+  // Gather current image URLs from the carousel or single image
+  const carousel = wrap.querySelector('.prod-carousel');
+  if (carousel) {
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const images = Array.from(slides).map(s => s.src);
+    const current = parseInt(carousel.dataset.current) || 0;
+    openLightbox(images, current);
+  } else {
+    const img = wrap.querySelector('img');
+    if (img) openLightbox([img.src], 0);
+  }
+}
+
+/* ---- Render Footer Category Links ------------------------- */
+function buildFooterCategories() {
+  const ul = document.getElementById('footer-cats');
+  if (!ul) return;
+  // Show first 7 in footer
+  ul.innerHTML = CATEGORIES.slice(0, 7).map(cat =>
+    `<li><a href="#categories">${cat.name}</a></li>`
+  ).join('');
+}
+
+/* ---- Navbar Scroll Effect --------------------------------- */
+function initNavbar() {
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+/* ---- Mobile Hamburger Menu -------------------------------- */
+function initHamburger() {
+  const btn = document.getElementById('hamburger');
+  const links = document.querySelector('.nav-links');
+  if (!btn || !links) return;
+
+  btn.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  // Close on link click
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+/* ---- Scroll Reveal Animation ------------------------------ */
+function initScrollReveal() {
+  const targets = document.querySelectorAll(
+    '.cat-card, .occ-card, .strip-item, .step, .contact-card, .why-text, .why-image'
+  );
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  targets.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+}
+
+/* ---- Init ------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  buildOccasionCards();
+  buildCategoryCards();
+  buildFooterCategories();
+  initNavbar();
+  initHamburger();
+  initScrollReveal();
+  initModal();
+  initLightbox();
+});
+
+
+###############################################################################################
+next file -- index.js
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hastkala – Handcrafted Resin Art</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo"><img src="logo.svg" alt="Hastkala" class="logo-icon"><span class="logo-wordmark"><em>हस्त</em>kala</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#categories">Collections</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#contact" class="nav-cta">Order Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Handcrafted with Heart</p>
+      <h1>Where Art Meets <br /><span>Resin Magic</span></h1>
+      <p class="hero-sub">Unique, personalised resin art pieces crafted to make every moment unforgettable.</p>
+      <div class="hero-btns">
+        <a href="#categories" class="btn btn-primary">Explore Collections</a>
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Hastkala!%20I%20want%20to%20place%20an%20order." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp" class="wa-icon" />
+          Chat &amp; Order
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT STRIP ===== -->
+  <section class="about-strip" id="about">
+    <div class="container">
+      <div class="strip-grid">
+        <div class="strip-item">
+          <div class="strip-icon">✦</div>
+          <h3>100% Handmade</h3>
+          <p>Every piece is crafted by hand with love and precision.</p>
+        </div>
+        <div class="strip-item">
+          <div class="strip-icon">✦</div>
+          <h3>Fully Personalised</h3>
+          <p>Add names, dates, photos, or custom designs.</p>
+        </div>
+        <div class="strip-item">
+          <div class="strip-icon">✦</div>
+          <h3>Perfect Gifting</h3>
+          <p>Ideal for weddings, anniversaries, birthdays &amp; more.</p>
+        </div>
+        <div class="strip-item">
+          <div class="strip-icon">✦</div>
+          <h3>Ships Pan India</h3>
+          <p>Safe, packed delivery right to your doorstep.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SHOP BY OCCASION ===== -->
+  <section class="occasions" id="occasions">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-tag">Not Sure What to Gift?</p>
+        <h2>Shop by Occasion</h2>
+        <p class="section-sub">Browse by the moment — we'll help you find the perfect handcrafted gift.</p>
+      </div>
+      <div class="occ-grid" id="occ-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORIES ===== -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-tag">Our Collections</p>
+        <h2>Explore What We Craft</h2>
+        <p class="section-sub">Tap any category to discover our range. Every product can be customised to your taste.</p>
+      </div>
+      <div class="cat-grid" id="cat-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY US ===== -->
+  <section class="why-us" id="why-us">
+    <div class="container why-inner">
+      <div class="why-text">
+        <p class="section-tag">Why Choose Us</p>
+        <h2>Crafted Just for You</h2>
+        <p>At Hastkala we believe every product should tell a story. From the colour palette to the tiniest detail, each piece is made to order, ensuring it is as unique as you are.</p>
+        <ul class="why-list">
+          <li><span>✔</span> No two pieces are identical</li>
+          <li><span>✔</span> Custom sizes, colours &amp; designs available</li>
+          <li><span>✔</span> Bulk orders for weddings &amp; events welcome</li>
+          <li><span>✔</span> Affordable price range for all budgets</li>
+        </ul>
+        <p class="why-delivery-note"> Delivery takes approximately <strong>15 days</strong> as each piece is handcrafted. Need it urgently? Contact us on <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Hastkala!%20I%20need%20an%20urgent%20order." target="_blank" rel="noopener noreferrer">WhatsApp</a> or <a href="https://instagram.com/hastkala" target="_blank" rel="noopener noreferrer">Instagram</a>.</p>
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Hastkala!%20I%20want%20to%20place%20an%20order." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get a Custom Quote</a>
+      </div>
+      <div class="why-image">
+        <div class="why-img-placeholder">
+          <span>✦</span>
+          <p>Your Craft Photo Here</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-tag">Simple Process</p>
+        <h2>How to Order</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Browse &amp; Choose</h3>
+          <p>Explore our categories and pick a product you love.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Chat with Us</h3>
+          <p>Message us on WhatsApp with your requirements, colours &amp; size.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>We Craft &amp; Deliver</h3>
+          <p>Your personalised piece is made and shipped to you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contact">
+    <div class="container contact-inner">
+      <div class="section-head">
+        <p class="section-tag">Get in Touch</p>
+        <h2>Let's Create Something Beautiful</h2>
+        <p class="section-sub">Have a question or ready to place an order? Reach out — we'd love to hear from you!</p>
+      </div>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="cc-icon"></div>
+          <h3>WhatsApp</h3>
+          <p>+91 XXXXX XXXXX</p>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Hastkala!%20I%20want%20to%20place%20an%20order." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Chat Now</a>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon"></div>
+          <h3>Email</h3>
+          <p>your@email.com</p>
+          <a href="mailto:your@email.com" class="btn btn-outline">Send Mail</a>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon"></div>
+          <h3>Instagram</h3>
+          <p>@hastkala</p>
+          <a href="https://instagram.com/hastkala" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Follow Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo"><img src="logo.svg" alt="Hastkala" class="logo-icon"><span class="logo-wordmark"><em>हस्त</em>kala</span></a>
+        <p>Handcrafted resin art pieces, made with love and delivered with care.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#categories">Collections</a></li>
+          <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-categories">
+        <h4>Popular Categories</h4>
+        <ul id="footer-cats">
+          <!-- Populated by JS -->
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Hastkala. All rights reserved. | Made with ♥</p>
+    </div>
+  </footer>
+
+  <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+  <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Hastkala!%20I%20want%20to%20place%20an%20order."
+     class="float-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp" />
+  </a>
+
+  <!-- ===== LIGHTBOX (full-screen image viewer) ===== -->
+  <div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+    <span class="lightbox-counter" id="lightbox-counter"></span>
+    <button class="lightbox-arrow lightbox-prev" id="lightbox-prev" aria-label="Previous">‹</button>
+    <div class="lightbox-img-wrap" id="lightbox-img"></div>
+    <button class="lightbox-arrow lightbox-next" id="lightbox-next" aria-label="Next">›</button>
+    <div class="lightbox-dots" id="lightbox-dots"></div>
+  </div>
+
+  <!-- ===== PRODUCT MODAL ===== -->
+  <div id="product-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-emoji" id="modal-emoji"></span>
+          <h2 id="modal-title"></h2>
+        </div>
+        <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      </div>
+      <p class="modal-subtitle" id="modal-subtitle"></p>
+      <div class="modal-products" id="modal-products"></div>
+      <div class="modal-footer-note">
+        <p>Don't see what you want? <a class="modal-custom-link" href="#">Ask for a custom product →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+#######################################################################################################################
+style.js --
+
+
+/* ============================================================
+   HASTKALA – Landing Page Styles
+   Color Palette: Warm Coral-Rose Gold + Ivory + Deep Brown
+   ============================================================ */
+
+:root {
+  --primary:    #C8506A;   /* deep rose */
+  --primary-lt: #E8768A;   /* lighter rose */
+  --accent:     #D4AF37;   /* gold */
+  --bg:         #FFF8F4;   /* warm ivory */
+  --bg-alt:     #FFF0E8;   /* slightly deeper ivory */
+  --surface:    #FFFFFF;
+  --text:       #2C1810;   /* deep warm brown */
+  --text-soft:  #6B4C42;   /* muted brown */
+  --border:     #F0D8CC;
+  --shadow:     rgba(200, 80, 106, 0.15);
+  --wa-green:   #25D366;
+  --radius:     14px;
+  --transition: 0.3s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+a { text-decoration: none; color: inherit; }
+
+ul { list-style: none; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.btn-primary:hover {
+  background: var(--primary-lt);
+  border-color: var(--primary-lt);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.btn-outline:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  background: var(--wa-green);
+  color: #fff;
+  border-color: var(--wa-green);
+}
+.btn-whatsapp:hover {
+  background: #1ebe5a;
+  border-color: #1ebe5a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+}
+.btn-whatsapp .wa-icon {
+  width: 20px; height: 20px;
+  filter: invert(1) brightness(2);
+  display: inline-block;
+}
+
+/* ---- SECTION HEADINGS ---- */
+.section-head {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.section-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.section-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+.section-sub {
+  margin-top: 14px;
+  font-size: 1rem;
+  color: var(--text-soft);
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+}
+.navbar.scrolled {
+  background: rgba(255, 248, 244, 0.96);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  padding: 12px 0;
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  transition: transform 0.4s ease;
+  filter: drop-shadow(0 2px 6px rgba(200, 80, 106, 0.2));
+}
+.logo:hover .logo-icon {
+  transform: scale(1.12);
+  filter: drop-shadow(0 3px 12px rgba(200, 80, 106, 0.35));
+}
+.logo-wordmark {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.logo-wordmark em {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.45rem;
+  vertical-align: baseline;
+  margin-left: 1px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: color var(--transition);
+}
+.nav-links a:hover { color: var(--primary); }
+.nav-links .nav-cta {
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+.nav-links .nav-cta:hover {
+  background: var(--primary-lt);
+  color: #fff;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #3D0C1A 0%, #6B1A2E 35%, #C8506A 65%, #D4AF37 100%);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 200, 180, 0.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+/* Decorative circle blobs */
+.hero::before, .hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12;
+}
+.hero::before {
+  width: 500px; height: 500px;
+  background: var(--accent);
+  top: -100px; right: -100px;
+}
+.hero::after {
+  width: 350px; height: 350px;
+  background: #fff;
+  bottom: -80px; left: -60px;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 120px 24px 80px;
+  max-width: 780px;
+}
+.hero-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  border: 1px solid rgba(212,175,55,0.4);
+  padding: 6px 18px;
+  border-radius: 50px;
+}
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 22px;
+}
+.hero-content h1 span {
+  color: var(--accent);
+}
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 40px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+}
+.scroll-arrow {
+  width: 20px; height: 20px;
+  border-right: 2px solid rgba(255,255,255,0.4);
+  border-bottom: 2px solid rgba(255,255,255,0.4);
+  transform: rotate(45deg);
+  animation: bounce 1.8s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(6px); }
+}
+
+/* ============================================================
+   ABOUT STRIP
+   ============================================================ */
+.about-strip {
+  background: var(--surface);
+  padding: 64px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.strip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+.strip-icon {
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+.strip-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+.strip-item p {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+}
+
+/* ============================================================
+   SHOP BY OCCASION
+   ============================================================ */
+.occasions {
+  padding: 96px 0;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+}
+.occ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+.occ-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+}
+.occ-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--occ-grad);
+  z-index: 0;
+}
+.occ-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.18);
+}
+.occ-inner {
+  position: relative;
+  z-index: 1;
+  padding: 28px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.28) 100%);
+  min-height: 220px;
+}
+.occ-emoji {
+  font-size: 2.6rem;
+  line-height: 1;
+}
+.occ-inner h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+.occ-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.occ-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.occ-btn {
+  margin-top: auto;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.45);
+  padding: 8px 18px;
+  border-radius: 50px;
+  transition: background var(--transition);
+  backdrop-filter: blur(4px);
+}
+.occ-btn:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+/* ============================================================
+   CATEGORIES
+   ============================================================ */
+.categories {
+  padding: 96px 0;
+  background: var(--bg);
+}
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px;
+}
+.cat-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  transition: transform var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+  position: relative;
+}
+.cat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px var(--shadow);
+}
+.cat-img-wrap {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-alt), var(--border));
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cat-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.cat-card:hover .cat-img-wrap img {
+  transform: scale(1.07);
+}
+.cat-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; height: 100%;
+  gap: 10px;
+}
+.cat-placeholder .cat-emoji { font-size: 3rem; }
+.cat-placeholder p {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  letter-spacing: 0.5px;
+}
+.cat-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+}
+.cat-body {
+  padding: 18px 20px 22px;
+}
+.cat-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+.cat-body p {
+  font-size: 0.83rem;
+  color: var(--text-soft);
+  margin-bottom: 14px;
+}
+.cat-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cat-price {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+.cat-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--wa-green);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 50px;
+  transition: var(--transition);
+}
+.cat-wa-btn:hover { background: #1ebe5a; }
+.cat-wa-btn img {
+  width: 14px; height: 14px;
+  filter: invert(1) brightness(2);
+  display: inline-block;
+}
+
+/* ============================================================
+   WHY US
+   ============================================================ */
+.why-us {
+  background: var(--bg-alt);
+  padding: 96px 0;
+  border-top: 1px solid var(--border);
+}
+.why-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.why-text .section-tag { display: block; text-align: left; }
+.why-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 18px;
+  text-align: left;
+}
+.why-text p {
+  color: var(--text-soft);
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+}
+.why-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.why-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.92rem;
+}
+.why-list li span {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+.why-delivery-note {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  background: var(--bg);
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+.why-delivery-note a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+.why-image {
+  display: flex;
+  justify-content: center;
+}
+.why-img-placeholder {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--border), #F5D5C5);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  border: 2px dashed var(--border);
+}
+.why-img-placeholder span { font-size: 2.4rem; color: var(--primary); }
+
+/* ============================================================
+   HOW IT WORKS
+   ============================================================ */
+.how-it-works {
+  background: var(--surface);
+  padding: 96px 0;
+  border-top: 1px solid var(--border);
+}
+.steps-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.step {
+  text-align: center;
+  max-width: 240px;
+  padding: 32px 24px;
+  background: var(--bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.3;
+  margin-bottom: 14px;
+}
+.step h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+}
+.step p { font-size: 0.85rem; color: var(--text-soft); }
+.step-arrow {
+  font-size: 1.8rem;
+  color: var(--border);
+  font-weight: 300;
+}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact {
+  background: linear-gradient(135deg, #3D0C1A 0%, #6B1A2E 50%, #C8506A 100%);
+  padding: 96px 0;
+}
+.contact .section-tag { color: var(--accent); }
+.contact .section-head h2 { color: #fff; }
+.contact .section-sub { color: rgba(255,255,255,0.7); }
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.contact-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius);
+  padding: 40px 28px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  transition: var(--transition);
+}
+.contact-card:hover {
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-4px);
+}
+.cc-icon {
+  font-size: 2.4rem;
+  margin-bottom: 14px;
+}
+.contact-card h3 {
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+.contact-card p {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.9rem;
+  margin-bottom: 22px;
+}
+.contact-card .btn-primary {
+  background: var(--wa-green);
+  border-color: var(--wa-green);
+}
+.contact-card .btn-outline {
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+.contact-card .btn-outline:hover {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: #1A0810;
+  color: rgba(255,255,255,0.7);
+  padding: 64px 0 0;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand .logo { margin-bottom: 14px; display: inline-flex; }
+.footer-brand .logo-wordmark {
+  background: linear-gradient(135deg, #fff 0%, #ddd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.footer-brand p { font-size: 0.88rem; max-width: 280px; }
+.footer h4 {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.footer ul { display: flex; flex-direction: column; gap: 10px; }
+.footer ul li a {
+  font-size: 0.87rem;
+  color: rgba(255,255,255,0.6);
+  transition: color var(--transition);
+}
+.footer ul li a:hover { color: var(--accent); }
+.footer-bottom {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ============================================================
+   FLOATING WHATSAPP
+   ============================================================ */
+.float-wa {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 60px; height: 60px;
+  background: var(--wa-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+  z-index: 999;
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: pulse-wa 2.5s infinite;
+}
+.float-wa:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 32px rgba(37, 211, 102, 0.55);
+  animation: none;
+}
+.float-wa img {
+  width: 32px; height: 32px;
+  filter: invert(1) brightness(2);
+}
+@keyframes pulse-wa {
+  0%, 100% { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45); }
+  50% { box-shadow: 0 6px 36px rgba(37, 211, 102, 0.7); }
+}
+
+/* ============================================================
+   PRODUCT MODAL
+   ============================================================ */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(20, 8, 8, 0.72);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal-box {
+  background: var(--bg);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.28s ease;
+  display: flex;
+  flex-direction: column;
+}
+.modal-overlay.open .modal-box {
+  transform: translateY(0) scale(1);
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 32px 0;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 1;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 18px;
+}
+.modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.modal-emoji { font-size: 2rem; line-height: 1; }
+.modal-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--text);
+}
+.modal-close {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-alt);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+.modal-close:hover { background: var(--border); }
+.modal-subtitle {
+  padding: 14px 32px 0;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+.modal-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 24px 32px;
+}
+.prod-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.prod-card:hover {
+  box-shadow: 0 10px 32px var(--shadow);
+  transform: translateY(-3px);
+}
+.prod-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; height: 100%;
+  font-size: 2.8rem;
+}
+.prod-body {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.prod-body h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+.prod-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.prod-colors {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.color-swatch {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.08);
+  display: inline-block;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  position: relative;
+}
+.color-swatch:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.color-swatch.active {
+  border-color: var(--text);
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--text);
+  transform: scale(1.1);
+}
+.prod-sizes {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.size-chip {
+  font-size: 0.7rem;
+  font-weight: 500;
+  background: var(--bg-alt);
+  color: var(--text-soft);
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+}
+.size-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+.size-chip.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  font-weight: 600;
+}
+.prod-placeholder--colored {
+  transition: background 0.35s ease;
+}
+.prod-placeholder--colored span {
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+  font-size: 2.4rem;
+}
+.prod-img-wrap {
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(135deg, var(--bg-alt), var(--border));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.prod-zoom-btn {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 3;
+  transition: transform var(--transition), background var(--transition);
+}
+.prod-zoom-btn:hover {
+  transform: scale(1.15);
+  background: #fff;
+}
+.prod-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ---- Product Carousel ---- */
+.prod-carousel {
+  position: relative;
+  width: 100%; height: 100%;
+}
+.prod-carousel .carousel-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.prod-carousel .carousel-slide.active {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.85);
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background var(--transition), transform var(--transition);
+  z-index: 2;
+}
+.carousel-arrow:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+.carousel-prev { left: 6px; }
+.carousel-next { right: 6px; }
+.carousel-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 2;
+}
+.carousel-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.carousel-dot.active {
+  background: var(--primary);
+  transform: scale(1.3);
+}
+.carousel-dot:hover { background: var(--primary-lt); }
+
+.prod-wa-btn {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--wa-green);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: 50px;
+  transition: var(--transition);
+  text-decoration: none;
+}
+.prod-wa-btn:hover { background: #1ebe5a; }
+.prod-wa-btn img {
+  width: 14px; height: 14px;
+  filter: invert(1) brightness(2);
+}
+.modal-footer-note {
+  padding: 16px 32px 24px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  text-align: center;
+}
+.modal-footer-note a {
+  color: var(--primary);
+  font-weight: 600;
+}
+.modal-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  color: var(--text-soft);
+}
+.cat-view-btn {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ============================================================
+   LIGHTBOX (full-screen image viewer)
+   ============================================================ */
+.lightbox-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.lightbox-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.lightbox-close {
+  position: absolute;
+  top: 18px; right: 22px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background var(--transition);
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.25); }
+.lightbox-counter {
+  position: absolute;
+  top: 24px; left: 24px;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 2;
+}
+.lightbox-img-wrap {
+  max-width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-img-wrap img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  animation: fadeIn 0.25s ease;
+}
+.lightbox-img-wrap .prod-placeholder {
+  width: 60vw; height: 60vh;
+  max-width: 600px; max-height: 500px;
+  border-radius: 12px;
+  font-size: 5rem;
+}
+.lightbox-img-wrap .prod-placeholder--colored {
+  border-radius: 12px;
+}
+.lightbox-img-wrap .prod-placeholder--colored span {
+  font-size: 5rem;
+}
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), transform var(--transition);
+  z-index: 2;
+}
+.lightbox-arrow:hover {
+  background: rgba(255,255,255,0.25);
+}
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+.lightbox-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+.lightbox-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.lightbox-dot.active {
+  background: #fff;
+  transform: scale(1.3);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 960px) {
+  .strip-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-inner { grid-template-columns: 1fr; }
+  .why-image { order: -1; }
+  .contact-cards { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 248, 244, 0.97);
+    backdrop-filter: blur(12px);
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    z-index: 999;
+    font-size: 1.2rem;
+  }
+  .hamburger { display: flex; z-index: 1000; }
+  .contact-cards { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .steps-grid { flex-direction: column; }
+  .step-arrow { transform: rotate(90deg); }
+}
+
+@media (max-width: 480px) {
+  .strip-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .hero-btns { flex-direction: column; align-items: center; }
+}
