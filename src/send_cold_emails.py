@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+from dotenv import load_dotenv
 import argparse
 import csv
 import os
@@ -13,6 +13,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+load_dotenv(str(ROOT / ".env"))
 PENDING_CSV = ROOT / "data" / "hr_emails.csv"
 SENT_CSV = ROOT / "data" / "sent_emails.csv"
 SOFTWARE_RESUME = ROOT / "Vishal_SE_B_Tech.pdf"

@@ -1,0 +1,12 @@
+# Local env
+.env
+.env.*
+
+# Python cache / virtualenv
+__pycache__/
+*.pyc
+venv/
+env/
+
+# Editor
+.vscode/
